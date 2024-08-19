@@ -1,4 +1,12 @@
 module Main where
 
+import Endpoints.Users (UserAPI)
+
+-- import Servant
+
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = do
+    putStrLn "Hello, Haskell!"
+    return ()
+
+-- server1 :: Server UserAPI
