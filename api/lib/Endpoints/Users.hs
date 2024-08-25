@@ -2,17 +2,18 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Endpoints.Users (UserAPI, users1) where
+module Endpoints.Users (UserAPI) where
 
 import Data.Aeson
 import GHC.Generics
-import Servant.API (Get, JSON, QueryParam, type (:>))
+import Servant.API (Get, JSON, QueryParam, type (:>), PlainText)
 import Data.Time.Calendar
+import Data.Text
 
 type UserAPI =
     "user"
         :> "profile"
-        :> Get '[JSON] [User]
+        :> Get '[PlainText] Text
 
 users1 :: [User]
 users1 =

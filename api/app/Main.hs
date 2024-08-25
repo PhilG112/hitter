@@ -1,14 +1,31 @@
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE DataKinds #-}
 module Main where
 
-import Endpoints.Users (users1, UserAPI)
-
+import Data.Text
 import Servant
+import Network.Wai.Handler.Warp
 
 main :: IO ()
 main = do
-    putStrLn "Hello, Haskell!"
-    return ()
+    run 8081 app
+    return () 
 
 
-server1 :: Server UserAPI
-server1 = return users1
+type API = "hello" :> Get '[PlainText] Text
+
+server :: Server API
+server = return "Hello, world!"
+
+app :: Application
+app = serve (Proxy :: Proxy API) server
+
+-- server1 :: Server UserAPI
+-- server1 = return "hello"
+
+-- userApi :: Proxy UserAPI
+-- userApi = Proxy
+
+-- app1 :: Application
+-- app1 = serve userApi server1

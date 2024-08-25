@@ -72,6 +72,9 @@ executable hitter
         , hitter
         , servant-server
         , servant
+        , warp
+        , wai
+        , text
 
     -- Directories containing source files.
     hs-source-dirs:   app
